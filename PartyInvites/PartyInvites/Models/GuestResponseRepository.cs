@@ -3,7 +3,7 @@ using PartyInvites.Abstract;
 
 namespace PartyInvites.Models
 {
-	public class Repository : IRepository
+	public class GuestResponseRepository : IRepository
 	{
 		private readonly List<GuestResponse> _responses = new List<GuestResponse>();
 

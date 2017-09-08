@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using PartyInvites.Models;
 using System.Linq;
 using PartyInvites.Abstract;
@@ -17,8 +16,6 @@ namespace PartyInvites.Controllers
 
 		public ViewResult Index()
         {
-            int hour = DateTime.Now.Hour;
-            ViewBag.Greeting = hour < 12 ? "Good Morning" : "Good Afternoon";
             return View("Index");
         }
 
@@ -45,7 +42,14 @@ namespace PartyInvites.Controllers
 
         public ViewResult ListResponses()
         {
-            return View(_repository.GuestResponses.Where(r => r.WillAttend == true));
+	        if (_repository.GuestResponses.Count(r => r.WillAttend == true) > 0)
+	        {
+		        return View(_repository.GuestResponses.Where(r => r.WillAttend == true));
+			}
+	        else
+	        {
+				return View("NoResponses");
+			}
         }
     }
 }
