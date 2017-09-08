@@ -7,8 +7,15 @@
 	<link rel="stylesheet" href="/css/style.css" />
 </head>
 <body>
+	<div class="content-wrapper">
+		<div id="navbar">
+			<ul>
+				<li><a asp-controller="Home" asp-action="">Home</a></li>
+			</ul>
+		</div>
 
-	@RenderBody()
+		@RenderBody()
 
+	</div>
 </body>
 </html>
