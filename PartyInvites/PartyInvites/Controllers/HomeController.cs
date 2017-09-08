@@ -42,14 +42,7 @@ namespace PartyInvites.Controllers
 
         public ViewResult ListResponses()
         {
-	        if (_repository.GuestResponses.Count(r => r.WillAttend == true) > 0)
-	        {
-		        return View(_repository.GuestResponses.Where(r => r.WillAttend == true));
-			}
-	        else
-	        {
-				return View("NoResponses");
-			}
+	        return _repository.GuestResponses.Any() ? View(_repository.GuestResponses) : View("NoResponses");
         }
     }
 }
