@@ -57,10 +57,78 @@ table {
 
 body {
     background-color: #111111;
+    margin: 1em;
+    font-family: 'Roboto', sans-serif;
 }
 
-p {
-    padding: 10px 0;
+input, select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0 20px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+h1 {
+    font-size: 2em;
+    margin: 0.67em 0;
+}
+
+h2 {
+    font-size: 1.5em;
+    margin: 0.83em 0;
+}
+
+h3 {
+    font-size: 1.17em;
+    margin: 1em 0;
+}
+
+h4 {
+    font-size: 1em;
+    margin: 1.33em 0;
+}
+
+h5 {
+    font-size: .83em;
+    margin: 1.67em 0;
+}
+
+h6 {
+    font-size: .67em;
+    margin: 2.33em 0;
+}
+
+button {
+    color: #fff;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #333;
+    transition: all 0.2s cubic-bezier(.25,.8,.25,1);
+}
+
+    button:hover {
+        color: #fff;
+        background-color: #ffbd38;
+        transition: all 0.2s cubic-bezier(.25,.8,.25,1);
+    }
+
+td, th {
+    color: #fff;
+    padding: 1em;
+    background-color: #333;
+    border: 1px solid #555;
+}
+
+th {
+    text-align: left;
+    background-color: #111;
 }
 
 /* Validation */
@@ -79,8 +147,12 @@ p {
 }
 
 .validation-summary-errors {
-    font-weight: bold;
+    padding-bottom: 1em;
     color: #f00;
+}
+
+.validation-summary-errors ul li{
+    padding: 5px;
 }
 
 .validation-summary-valid {
@@ -88,37 +160,54 @@ p {
 }
 
 
-/* content-wrapper */
+/* wrappers */
 
 .content-wrapper {
     max-width: 980px;
+    padding: 1em;
     margin: 0 auto;
     background-color: #e3e3e3;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    height: 100%;
+}
+
+.form-wrapper {
+    background-color: #fff;
+    max-width: 50%;
+    margin: 0 auto;
+    padding: 1em;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 
 
 /* navbar */
 
-#navbar ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #333;
+#navbar {
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 
-#navbar li {
-    float: left;
-}
-
-    #navbar li a {
-        display: block;
-        color: white;
-        text-align: center;
-        padding: 14px 16px;
-        text-decoration: none;
+    #navbar ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #333;
     }
 
-        #navbar li a:hover {
-            background-color: #111;
+    #navbar li {
+        float: left;
+    }
+
+        #navbar li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            transition: all 0.2s cubic-bezier(.25,.8,.25,1);
         }
+
+            #navbar li a:hover {
+                background-color: #111;
+                transition: all 0.2s cubic-bezier(.25,.8,.25,1);
+            }

@@ -1,28 +1,31 @@
 ﻿@model IEnumerable<PartyInvites.Models.GuestResponse>
 
 <div>
+	<div>
+		<h4>Attendance</h4>
+	</div>
 	<h2>Here is the list of people attending the party</h2>
 	<table>
 		<thead>
-			<tr>
-				<th>Name</th>
-				<th>Email</th>
-				<th>Phone</th>
-				<th>Address</th>
-				<th>WillAttend</th>
-			</tr>
+		<tr>
+			<th>Name</th>
+			<th>Email</th>
+			<th>Phone</th>
+			<th>Address</th>
+			<th>WillAttend</th>
+		</tr>
 		</thead>
 		<tbody>
-			@foreach (PartyInvites.Models.GuestResponse r in Model)
-			{
-				<tr>
-					<td>@r.Name</td>
-					<td>@r.Email</td>
-					<td>@r.Phone</td>
-					<td>@r.Address</td>
-					<td>@r.WillAttend</td>
-				</tr>
-			}
+		@foreach (PartyInvites.Models.GuestResponse r in Model)
+		{
+			<tr>
+				<td>@r.Name</td>
+				<td>@r.Email</td>
+				<td>@r.Phone</td>
+				<td>@r.Address</td>
+				<td>@r.WillAttend</td>
+			</tr>
+		}
 		</tbody>
 	</table>
 </div>
