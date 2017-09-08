@@ -2,13 +2,20 @@
 using Microsoft.AspNetCore.Mvc;
 using PartyInvites.Models;
 using System.Linq;
+using PartyInvites.Abstract;
 
 namespace PartyInvites.Controllers
 {
     public class HomeController : Controller
     {
+	    private readonly IRepository _repository;
 
-        public ViewResult Index()
+	    public HomeController(IRepository repo)
+	    {
+		    _repository = repo;
+	    }
+
+		public ViewResult Index()
         {
             int hour = DateTime.Now.Hour;
             ViewBag.Greeting = hour < 12 ? "Good Morning" : "Good Afternoon";
@@ -26,7 +33,7 @@ namespace PartyInvites.Controllers
         {
             if (ModelState.IsValid)
             {
-                Repository.AddResponse(guestResponse);
+                _repository.AddResponse(guestResponse);
                 return View("Thanks", guestResponse);
             }
             else
@@ -38,7 +45,7 @@ namespace PartyInvites.Controllers
 
         public ViewResult ListResponses()
         {
-            return View(Repository.Responses.Where(r => r.WillAttend == true));
+            return View(_repository.GuestResponses.Where(r => r.WillAttend == true));
         }
     }
 }

@@ -1,21 +1,17 @@
 ﻿using System.Collections.Generic;
+using PartyInvites.Abstract;
+
 namespace PartyInvites.Models
 {
-    public static class Repository
-    {
-        private static List<GuestResponse> responses = new List<GuestResponse>();
+	public class Repository : IRepository
+	{
+		private readonly List<GuestResponse> _responses = new List<GuestResponse>();
 
-        public static IEnumerable<GuestResponse> Responses
-        {
-            get
-            {
-                return responses;
-            }
-        }
+		public IEnumerable<GuestResponse> GuestResponses => _responses;
 
-        public static void AddResponse(GuestResponse response)
-        {
-            responses.Add(response);
-        }
-    }
+		public void AddResponse(GuestResponse response)
+		{
+			_responses.Add(response);
+		}
+	}
 }
