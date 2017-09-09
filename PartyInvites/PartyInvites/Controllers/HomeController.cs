@@ -28,6 +28,8 @@ namespace PartyInvites.Controllers
 		[HttpPost]
 		public ViewResult Login(GuestResponse guestResponse)
 		{
+			ModelState.Clear();
+
 			if (guestResponse.Email == null)
 			{
 				return View();
@@ -52,7 +54,14 @@ namespace PartyInvites.Controllers
 		{
 			if (ModelState.IsValid)
 			{
-				_repository.AddResponse(guestResponse);
+				if (_repository.GetGuestResponse(guestResponse.Email) != null)
+				{
+					_repository.UpdateGuestResponse(guestResponse);
+				}
+				else
+				{
+					_repository.AddResponse(guestResponse);
+				}
 				return View("Thanks", guestResponse);
 			}
 			else

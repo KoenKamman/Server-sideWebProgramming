@@ -10,5 +10,7 @@ namespace PartyInvites.Abstract
 	    bool AddResponse(GuestResponse response);
 
 	    GuestResponse GetGuestResponse(string email);
+
+	    bool UpdateGuestResponse(GuestResponse response);
     }
 }

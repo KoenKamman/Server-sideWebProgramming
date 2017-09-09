@@ -135,6 +135,10 @@ th {
     background-color: #111;
 }
 
+.readonly {
+    background-color: #dfdfdf;
+}
+
 /* Validation */
 
 .field-validation-error {

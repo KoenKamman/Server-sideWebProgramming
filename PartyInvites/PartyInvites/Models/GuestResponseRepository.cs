@@ -21,5 +21,16 @@ namespace PartyInvites.Models
 			var response = GuestResponses.SingleOrDefault(a => a.Email == email);
 			return response;
 		}
+
+		public bool UpdateGuestResponse(GuestResponse guestResponse)
+		{
+			var response = GetGuestResponse(guestResponse.Email);
+;			response.Email = guestResponse.Email;
+			response.Address = guestResponse.Address;
+			response.Name = guestResponse.Name;
+			response.Phone = guestResponse.Phone;
+			response.WillAttend = guestResponse.WillAttend;
+			return true;
+		}
 	}
 }
