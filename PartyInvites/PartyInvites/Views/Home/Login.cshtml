@@ -1,18 +1,19 @@
-﻿@model PartyInvites.Models.GuestResponse
+﻿@model PartyInvites.Models.Credentials
 
 <div>
 	<div>
-		<h4>Login</h4>
+		<h4>Enter your Email Address</h4>
 	</div>
 	<div class="form-wrapper">
 		<form asp-action="Login" method="post">
+			<div asp-validation-summary="All"></div>
 
 			<label asp-for="Email">Email</label>
 			<input asp-for="Email" placeholder="Your Email Address" />
 
 			<div>
 				<button type="submit">
-					Login
+					Submit
 				</button>
 			</div>
 		</form>

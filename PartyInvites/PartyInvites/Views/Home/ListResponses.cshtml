@@ -16,11 +16,11 @@
 		</tr>
 		</thead>
 		<tbody>
-		@foreach (PartyInvites.Models.GuestResponse r in Model)
+		@foreach (var r in Model)
 		{
 			<tr>
 				<td>@r.Name</td>
-				<td>@r.Email</td>
+				<td>@r.Credentials.Email</td>
 				<td>@r.Phone</td>
 				<td>@r.Address</td>
 				<td>@r.WillAttend</td>

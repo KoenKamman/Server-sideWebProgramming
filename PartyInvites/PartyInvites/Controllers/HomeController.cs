@@ -26,21 +26,14 @@ namespace PartyInvites.Controllers
 		}
 
 		[HttpPost]
-		public ViewResult Login(GuestResponse guestResponse)
+		public ViewResult Login(Credentials credentials)
 		{
-			ModelState.Clear();
+			//Validation Error
+			if (!ModelState.IsValid) return View(credentials);
 
-			if (guestResponse.Email == null)
-			{
-				return View();
-			}
-
-			var response = _repository.GetGuestResponse(guestResponse.Email);
-			if (response != null)
-			{
-				guestResponse = response;
-			}
-			return View("RsvpForm", guestResponse);
+			var response = _repository.GetGuestResponse(credentials.Email) ?? new GuestResponse();
+			response.Credentials = credentials;
+			return View("RsvpForm", response);
 		}
 
 		[HttpGet]
@@ -52,23 +45,18 @@ namespace PartyInvites.Controllers
 		[HttpPost]
 		public ViewResult RsvpForm(GuestResponse guestResponse)
 		{
-			if (ModelState.IsValid)
+			//Validation Error
+			if (!ModelState.IsValid) return View(guestResponse);
+
+			if (_repository.GetGuestResponse(guestResponse.Credentials.Email) != null)
 			{
-				if (_repository.GetGuestResponse(guestResponse.Email) != null)
-				{
-					_repository.UpdateGuestResponse(guestResponse);
-				}
-				else
-				{
-					_repository.AddResponse(guestResponse);
-				}
-				return View("Thanks", guestResponse);
+				_repository.UpdateGuestResponse(guestResponse);
 			}
 			else
 			{
-				// there is a validation error
-				return View(guestResponse);
+				_repository.AddResponse(guestResponse);
 			}
+			return View("Thanks", guestResponse);
 		}
 
 		public ViewResult ListResponses()

@@ -9,22 +9,37 @@
 			<div asp-validation-summary="All"></div>
 
 			<label asp-for="Name">Name</label>
-			<input asp-for="Name" placeholder="Your Name" value="@Model?.Name"/>
+			<input asp-for="Name" placeholder="Your Name" value="@Model?.Name" />
 
-			<label asp-for="Email">Email</label>
-			<input asp-for="Email" placeholder="Your Email Address" value="@Model?.Email"/>
+			<label asp-for="Credentials.Email">Email</label>
+			<input asp-for="Credentials.Email" readonly class="readonly" value="@Model?.Credentials.Email" />
 
 			<label asp-for="Phone">Phone Number</label>
-			<input asp-for="Phone" placeholder="Your Phone Number" value="@Model?.Phone"/>
+			<input asp-for="Phone" placeholder="Your Phone Number" value="@Model?.Phone" />
 
 			<label asp-for="Address">Address</label>
-			<input asp-for="Address" placeholder="Your Address" value="@Model?.Address"/>
+			<input asp-for="Address" placeholder="Your Address" value="@Model?.Address" />
 
 			<label asp-for="WillAttend">Will you attend?</label>
 			<select asp-for="WillAttend">
-				<option value="">Choose an option</option>
-				<option value="true">Yes, I'll be there</option>
-				<option value="false">No, I can't come</option>
+				@if (Model?.WillAttend == null)
+				{
+					<option selected value="">Choose an option</option>
+					<option value="true">Yes, I'll be there</option>
+					<option value="false">No, I can't come</option>
+				}
+				else if (Model?.WillAttend == true)
+				{
+					<option value="">Choose an option</option>
+					<option selected value="true">Yes, I'll be there</option>
+					<option value="false">No, I can't come</option>
+				}
+				else
+				{
+					<option value="">Choose an option</option>
+					<option value="true">Yes, I'll be there</option>
+					<option selected value="false">No, I can't come</option>
+				}
 			</select>
 
 			<div>

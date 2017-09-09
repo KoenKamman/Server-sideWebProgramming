@@ -18,14 +18,14 @@ namespace PartyInvites.Models
 
 		public GuestResponse GetGuestResponse(string email)
 		{
-			var response = GuestResponses.SingleOrDefault(a => a.Email == email);
+			var response = GuestResponses.SingleOrDefault(a => a.Credentials.Email == email);
 			return response;
 		}
 
 		public bool UpdateGuestResponse(GuestResponse guestResponse)
 		{
-			var response = GetGuestResponse(guestResponse.Email);
-;			response.Email = guestResponse.Email;
+			var response = GetGuestResponse(guestResponse.Credentials.Email);
+			response.Credentials.Email = guestResponse.Credentials.Email;
 			response.Address = guestResponse.Address;
 			response.Name = guestResponse.Name;
 			response.Phone = guestResponse.Phone;
