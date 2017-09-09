@@ -1,0 +1,20 @@
+﻿@model PartyInvites.Models.GuestResponse
+
+<div>
+	<div>
+		<h4>RSVP</h4>
+	</div>
+	<div class="form-wrapper">
+		<form asp-action="Login" method="post">
+
+			<label asp-for="Email">Email</label>
+			<input asp-for="Email" placeholder="Your Email Address " />
+
+			<div>
+				<button type="submit">
+					Submit RSVP
+				</button>
+			</div>
+		</form>
+	</div>
+</div>

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using PartyInvites.Abstract;
 
 namespace PartyInvites.Models
@@ -9,9 +10,16 @@ namespace PartyInvites.Models
 
 		public IEnumerable<GuestResponse> GuestResponses => _responses;
 
-		public void AddResponse(GuestResponse response)
+		public bool AddResponse(GuestResponse response)
 		{
 			_responses.Add(response);
+			return true;
+		}
+
+		public GuestResponse GetGuestResponse(string email)
+		{
+			var response = GuestResponses.SingleOrDefault(a => a.Email == email);
+			return response;
 		}
 	}
 }

@@ -9,16 +9,16 @@
 			<div asp-validation-summary="All"></div>
 
 			<label asp-for="Name">Name</label>
-			<input asp-for="Name" placeholder="Your Name"/>
+			<input asp-for="Name" placeholder="Your Name" value="@Model?.Name"/>
 
 			<label asp-for="Email">Email</label>
-			<input asp-for="Email" placeholder="Your Email Address "/>
+			<input asp-for="Email" placeholder="Your Email Address" value="@Model?.Email"/>
 
 			<label asp-for="Phone">Phone Number</label>
-			<input asp-for="Phone" placeholder="Your Phone Number"/>
+			<input asp-for="Phone" placeholder="Your Phone Number" value="@Model?.Phone"/>
 
 			<label asp-for="Address">Address</label>
-			<input asp-for="Address" placeholder="Your Address"/>
+			<input asp-for="Address" placeholder="Your Address" value="@Model?.Address"/>
 
 			<label asp-for="WillAttend">Will you attend?</label>
 			<select asp-for="WillAttend">

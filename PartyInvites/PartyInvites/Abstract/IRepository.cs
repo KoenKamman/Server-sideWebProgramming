@@ -7,6 +7,8 @@ namespace PartyInvites.Abstract
     {
 	    IEnumerable<GuestResponse> GuestResponses { get; }
 
-	    void AddResponse(GuestResponse response);
+	    bool AddResponse(GuestResponse response);
+
+	    GuestResponse GetGuestResponse(string email);
     }
 }
