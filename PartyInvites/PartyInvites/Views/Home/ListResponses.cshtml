@@ -13,7 +13,7 @@
 			<th>Email</th>
 			<th>Phone</th>
 			<th>Address</th>
-			<th>WillAttend</th>
+			<th>Attending</th>
 		</tr>
 		</thead>
 		<tbody>
@@ -24,7 +24,18 @@
 				<td>@repo.GetEmail(r)</td>
 				<td>@r.Phone</td>
 				<td>@r.Address</td>
-				<td>@r.WillAttend</td>
+				@if (r.WillAttend == null)
+				{
+					<td>?</td>
+				}
+				else if (r.WillAttend == true)
+				{
+					<td>Yes</td>
+				}
+				else
+				{
+					<td>No</td>
+				}
 			</tr>
 		}
 		</tbody>
