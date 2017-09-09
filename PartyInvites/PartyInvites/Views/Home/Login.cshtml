@@ -1,0 +1,21 @@
+﻿@model PartyInvites.Models.Credential
+
+<div>
+	<div>
+		<h4>Enter your Email Address</h4>
+	</div>
+	<div class="form-wrapper">
+		<form asp-action="Login" method="post">
+			<div asp-validation-summary="All"></div>
+
+			<label asp-for="Email">Email</label>
+			<input asp-for="Email" placeholder="Your Email Address" />
+
+			<div>
+				<button type="submit">
+					Submit
+				</button>
+			</div>
+		</form>
+	</div>
+</div>

@@ -1,44 +1,67 @@
-﻿using System;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using PartyInvites.Models;
 using System.Linq;
+using PartyInvites.Abstract;
 
 namespace PartyInvites.Controllers
 {
-    public class HomeController : Controller
-    {
+	public class HomeController : Controller
+	{
+		private readonly IRepository _repository;
 
-        public ViewResult Index()
-        {
-            int hour = DateTime.Now.Hour;
-            ViewBag.Greeting = hour < 12 ? "Good Morning" : "Good Afternoon";
-            return View("MyView");
-        }
+		public HomeController(IRepository repo)
+		{
+			_repository = repo;
+		}
 
-        [HttpGet]
-        public ViewResult RsvpForm()
-        {
-            return View();
-        }
+		public ViewResult Index()
+		{
+			return View("Index");
+		}
 
-        [HttpPost]
-        public ViewResult RsvpForm(GuestResponse guestResponse)
-        {
-            if (ModelState.IsValid)
-            {
-                Repository.AddResponse(guestResponse);
-                return View("Thanks", guestResponse);
-            }
-            else
-            {
-                // there is a validation error
-                return View();
-            }
-        }
+		[HttpGet]
+		public ViewResult Login()
+		{
+			return View();
+		}
 
-        public ViewResult ListResponses()
-        {
-            return View(Repository.Responses.Where(r => r.WillAttend == true));
-        }
-    }
+		[HttpPost]
+		public ViewResult Login(Credential credentials)
+		{
+			//Validation Error
+			if (!ModelState.IsValid) return View(credentials);
+
+			var response = _repository.GetGuestResponse(credentials.Email) ?? new GuestResponse();
+			response.Credential = credentials;
+			return View("RsvpForm", response);
+		}
+
+		[HttpGet]
+		public ViewResult RsvpForm()
+		{
+			return View();
+		}
+
+		[HttpPost]
+		public ViewResult RsvpForm(GuestResponse guestResponse)
+		{
+			//Validation Error
+			if (!ModelState.IsValid) return View(guestResponse);
+
+			if (_repository.GetGuestResponse(guestResponse.Credential.Email) != null)
+			{
+				_repository.UpdateGuestResponse(guestResponse);
+			}
+			else
+			{
+				_repository.AddResponse(guestResponse);
+			}
+			return View("Thanks", guestResponse);
+		}
+
+		public ViewResult ListResponses()
+		{
+			return _repository.GetAllResponses().Any() ? View(_repository.GetAllResponses()) : View("NoResponses");
+		}
+	}
 }
