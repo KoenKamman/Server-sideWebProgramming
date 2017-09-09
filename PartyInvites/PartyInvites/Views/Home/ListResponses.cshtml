@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<PartyInvites.Models.GuestResponse>
+@inject PartyInvites.Abstract.IRepository repo;
 
 <div>
 	<div>
@@ -20,7 +21,7 @@
 		{
 			<tr>
 				<td>@r.Name</td>
-				<td>@r.Credentials.Email</td>
+				<td>@repo.GetEmail(r)</td>
 				<td>@r.Phone</td>
 				<td>@r.Address</td>
 				<td>@r.WillAttend</td>
