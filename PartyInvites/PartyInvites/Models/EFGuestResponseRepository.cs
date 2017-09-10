@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using PartyInvites.Abstract;
+using Remotion.Linq.Clauses;
 
 namespace PartyInvites.Models
 {
@@ -12,7 +13,7 @@ namespace PartyInvites.Models
 		{
 			_context = context;
 		}
-
+		
 		public IEnumerable<GuestResponse> GetAllResponses()
 		{
 			return _context.Responses;
@@ -39,7 +40,7 @@ namespace PartyInvites.Models
 			var response = (from c in _context.Credentials
 				join r in _context.Responses on c.Id equals r.GuestResponseId
 				where c.Email.Equals(guestResponse.Credential.Email)
-				select r).Single();
+				select r).SingleOrDefault();
 
 			response.Address = guestResponse.Address;
 			response.Name = guestResponse.Name;

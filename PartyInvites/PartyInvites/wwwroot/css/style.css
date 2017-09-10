@@ -56,7 +56,7 @@ table {
 /* Basic Stuff */
 
 body {
-    background-color: #111111;
+    background-color: #e3e3e3;
     margin: 1em;
     font-family: 'Roboto', sans-serif;
 }
@@ -104,18 +104,18 @@ h6 {
 button {
     color: #fff;
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-    padding: 14px 20px;
     margin: 8px 0;
+    padding: 15px 32px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    background-color: #333;
+    background-color: #e84343;
     transition: all 0.2s cubic-bezier(.25,.8,.25,1);
 }
 
     button:hover {
         color: #fff;
-        background-color: #ffbd38;
+        background-color: #f58181;
         transition: all 0.2s cubic-bezier(.25,.8,.25,1);
     }
 
@@ -124,15 +124,17 @@ table {
 }
 
 td, th {
-    color: #fff;
+    color: #000;
     padding: 1em;
-    background-color: #333;
-    border: 1px solid #555;
+    background-color: #fff;
+    vertical-align: middle;
+    border: 1px solid #e3e3e3;
 }
 
 th {
+    color: #fff;
     text-align: left;
-    background-color: #111;
+    background-color: #e84343;
 }
 
 .readonly {
@@ -174,7 +176,7 @@ th {
     max-width: 980px;
     padding: 1em;
     margin: 0 auto;
-    background-color: #e3e3e3;
+    background-color: rgba(227, 227, 227, 0.75);
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
     height: 100%;
     border-radius: 4px;
@@ -183,7 +185,7 @@ th {
 .form-wrapper {
     background-color: #fff;
     max-width: 50%;
-    margin: 0 auto;
+    margin: 1em auto;
     padding: 1em;
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
@@ -191,15 +193,15 @@ th {
 
 /* navbar */
 
-    #navbar ul {
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-        overflow: hidden;
-        background-color: #333;
-        border-radius: 4px;
-        box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-    }
+#navbar {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #e84343;
+    border-radius: 4px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
 
     #navbar li {
         float: left;
@@ -215,6 +217,33 @@ th {
         }
 
             #navbar li a:hover {
-                background-color: #111;
+                background-color: #f58181;
                 transition: all 0.2s cubic-bezier(.25,.8,.25,1);
             }
+
+.material-icons {
+    color: #fff;
+}
+
+.glyphicon-home {
+    font-size: 36px;
+    padding: 4px;
+    float: left;
+}
+
+    .glyphicon-home:hover {
+        background-color: #f58181;
+    }
+
+.attend-column .attend-true {
+    color: rgb(75, 195, 40);
+}
+
+.attend-column .attend-false {
+    color: rgb(233, 70, 70);
+}
+
+.attend-column {
+    text-align: center;
+    text-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}

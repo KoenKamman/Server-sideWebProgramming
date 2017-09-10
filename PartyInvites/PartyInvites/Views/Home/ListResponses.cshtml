@@ -1,11 +1,11 @@
 ﻿@model IEnumerable<PartyInvites.Models.GuestResponse>
-@inject PartyInvites.Abstract.IRepository repo;
+@inject PartyInvites.Abstract.IRepository Repo
 
 <div>
 	<div>
-		<h4>Attendance</h4>
+		<h2>Attendance</h2>
 	</div>
-	<h2>Here is the list of people attending the party</h2>
+	<h4>Here is a list of people that responded and whether they're attending the party or not.</h4>
 	<table>
 		<thead>
 		<tr>
@@ -21,20 +21,20 @@
 		{
 			<tr>
 				<td>@r.Name</td>
-				<td>@repo.GetEmail(r)</td>
+				<td>@Repo.GetEmail(r)</td>
 				<td>@r.Phone</td>
 				<td>@r.Address</td>
 				@if (r.WillAttend == null)
 				{
-					<td>?</td>
+					<td class="attend-column">?</td>
 				}
 				else if (r.WillAttend == true)
 				{
-					<td>Yes</td>
+					<td class="attend-column"><i class="material-icons attend-true">done</i></td>
 				}
 				else
 				{
-					<td>No</td>
+					<td class="attend-column"><i class="material-icons attend-false">clear</i></td>
 				}
 			</tr>
 		}
