@@ -56,7 +56,7 @@ table {
 /* Basic Stuff */
 
 body {
-    background-color: #111111;
+    background-color: #e3e3e3;
     margin: 1em;
     font-family: 'Roboto', sans-serif;
 }
@@ -109,13 +109,13 @@ button {
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    background-color: #333;
+    background-color: #e84343;
     transition: all 0.2s cubic-bezier(.25,.8,.25,1);
 }
 
     button:hover {
         color: #fff;
-        background-color: #ffbd38;
+        background-color: #f58181;
         transition: all 0.2s cubic-bezier(.25,.8,.25,1);
     }
 
@@ -123,21 +123,18 @@ table {
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 
-tr {
-    border: 2px solid #e3e3e3;
-}
-
 td, th {
-    color: #fff;
+    color: #000;
     padding: 1em;
-    background-color: #333333;
+    background-color: #fff;
     vertical-align: middle;
     border: 1px solid #e3e3e3;
 }
 
 th {
+    color: #fff;
     text-align: left;
-    background-color: #111;
+    background-color: #e84343;
 }
 
 .readonly {
@@ -188,7 +185,7 @@ th {
 .form-wrapper {
     background-color: #fff;
     max-width: 50%;
-    margin: 0 auto;
+    margin: 1em auto;
     padding: 1em;
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
@@ -196,15 +193,15 @@ th {
 
 /* navbar */
 
-    #navbar {
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-        overflow: hidden;
-        background-color: #333;
-        border-radius: 4px;
-        box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-    }
+#navbar {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #e84343;
+    border-radius: 4px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
 
     #navbar li {
         float: left;
@@ -220,7 +217,7 @@ th {
         }
 
             #navbar li a:hover {
-                background-color: #ffbd38;
+                background-color: #f58181;
                 transition: all 0.2s cubic-bezier(.25,.8,.25,1);
             }
 
@@ -235,17 +232,18 @@ th {
 }
 
     .glyphicon-home:hover {
-        background-color: #ffbd38;
+        background-color: #f58181;
     }
 
-.attend-true {
-    color: rgb(128, 219, 109);
+.attend-column .attend-true {
+    color: rgb(75, 195, 40);
 }
 
-.attend-false {
-    color: rgb(219, 109, 109);
+.attend-column .attend-false {
+    color: rgb(233, 70, 70);
 }
 
 .attend-column {
     text-align: center;
+    text-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
