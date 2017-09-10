@@ -5,11 +5,15 @@
 	<meta name="viewport" content="width=device-width" />
 	<title>@ViewData["Title"]</title>
 	<link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link rel="stylesheet" href="/css/style.css" />
+	<script src="lib/jquery/dist/jquery.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
 </head>
 <body>
 <div class="content-wrapper">
 	<div id="navbar">
+		<a asp-controller="Home" asp-action="Index"><i class="material-icons glyphicon-home">home</i></a>
 		<ul>
 			<li><a asp-controller="Home" asp-action="Index">Home</a></li>
 			<li><a asp-controller="Home" asp-action="ListResponses">Attendance</a></li>
@@ -20,8 +24,7 @@
 
 </div>
 
-<!-- https://stackoverflow.com/a/42969608 -->
-<script> </script>
+<script> $.backstretch("images/_DSC0212.jpg"); </script>
 
 </body>
 </html>
