@@ -3,9 +3,9 @@
 <div>
 	<div class="form-wrapper">
 		<form asp-action="Login" method="post">
-			<div asp-validation-summary="All"></div>
 
 			<label asp-for="Email">Email</label>
+			<span asp-validation-for="Email"></span>
 			<input asp-for="Email" placeholder="Your Email Address" />
 
 			<div>

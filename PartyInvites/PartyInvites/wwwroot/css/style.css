@@ -53,22 +53,12 @@ table {
 }
 
 
-/* Basic Stuff */
+/* Basic Tags */
 
 body {
     background-color: #e3e3e3;
     margin: 1em;
     font-family: 'Roboto', sans-serif;
-}
-
-input, select {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0 20px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
 }
 
 h1 {
@@ -101,6 +91,9 @@ h6 {
     margin: 2.33em 0;
 }
 
+
+/* Button */
+
 button {
     color: #fff;
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
@@ -119,8 +112,12 @@ button {
         transition: all 0.2s cubic-bezier(.25,.8,.25,1);
     }
 
+
+/* Table */
+
 table {
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    margin: 0 auto;
 }
 
 td, th {
@@ -129,6 +126,8 @@ td, th {
     background-color: #fff;
     vertical-align: middle;
     border: 1px solid #e3e3e3;
+    max-width: 196px;
+    word-wrap: break-word;
 }
 
 th {
@@ -137,9 +136,37 @@ th {
     background-color: #e84343;
 }
 
+.attend-column .attend-true {
+    color: rgb(75, 195, 40);
+}
+
+.attend-column .attend-false {
+    color: rgb(233, 70, 70);
+}
+
+.attend-column {
+    text-align: center;
+    text-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+
+/* Form */
+
 .readonly {
     background-color: #dfdfdf;
 }
+
+input, select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0 20px 0;
+    display: inline-block;
+    border: 1px solid rgba(0, 0, 0, 0);
+    border-bottom: 1px solid #ccc;
+    box-sizing: border-box;
+    outline: none;
+}
+
 
 /* Validation */
 
@@ -161,9 +188,9 @@ th {
     color: #f00;
 }
 
-.validation-summary-errors ul li{
-    padding: 5px;
-}
+    .validation-summary-errors ul li {
+        padding: 5px;
+    }
 
 .validation-summary-valid {
     display: none;
@@ -221,6 +248,9 @@ th {
                 transition: all 0.2s cubic-bezier(.25,.8,.25,1);
             }
 
+
+/* Icons */
+
 .material-icons {
     color: #fff;
 }
@@ -234,16 +264,3 @@ th {
     .glyphicon-home:hover {
         background-color: #f58181;
     }
-
-.attend-column .attend-true {
-    color: rgb(75, 195, 40);
-}
-
-.attend-column .attend-false {
-    color: rgb(233, 70, 70);
-}
-
-.attend-column {
-    text-align: center;
-    text-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-}
