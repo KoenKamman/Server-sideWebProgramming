@@ -3,21 +3,24 @@
 <div>
 	<div class="form-wrapper">
 		<form asp-action="RsvpForm" method="post">
-			<div asp-validation-summary="All"></div>
-
-			<label asp-for="Name">Name</label>
-			<input asp-for="Name" placeholder="Your Name" value="@Model?.Name" />
-
+			
 			<label asp-for="Credential.Email">Email</label>
 			<input asp-for="Credential.Email" readonly class="readonly" value="@Model?.Credential.Email" />
 
+			<label asp-for="Name">Name</label> 
+			<span asp-validation-for="Name"></span>
+			<input asp-for="Name" placeholder="Your Name" value="@Model?.Name"/>
+
 			<label asp-for="Phone">Phone Number</label>
-			<input asp-for="Phone" placeholder="Your Phone Number" value="@Model?.Phone" />
+			<span asp-validation-for="Phone"></span>
+			<input asp-for="Phone" placeholder="Your Phone Number" value="@Model?.Phone"/>
 
 			<label asp-for="Address">Address</label>
-			<input asp-for="Address" placeholder="Your Address" value="@Model?.Address" />
+			<span asp-validation-for="Address"></span>
+			<input asp-for="Address" placeholder="Your Address" value="@Model?.Address"/>
 
 			<label asp-for="WillAttend">Will you attend?</label>
+			<span asp-validation-for="WillAttend"></span>
 			<select asp-for="WillAttend">
 				@if (Model?.WillAttend == null)
 				{
