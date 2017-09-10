@@ -128,16 +128,16 @@ tr {
 }
 
 td, th {
-    color: #000;
+    color: #fff;
     padding: 1em;
-    background-color: #c9c9c9;
+    background-color: #333333;
     vertical-align: middle;
     border: 1px solid #e3e3e3;
 }
 
 th {
     text-align: left;
-    background-color: #fff;
+    background-color: #111;
 }
 
 .readonly {
@@ -220,7 +220,7 @@ th {
         }
 
             #navbar li a:hover {
-                background-color: #111;
+                background-color: #ffbd38;
                 transition: all 0.2s cubic-bezier(.25,.8,.25,1);
             }
 
@@ -234,9 +234,9 @@ th {
     float: left;
 }
 
-.glyphicon-home:hover {
-    background-color: #111111;
-}
+    .glyphicon-home:hover {
+        background-color: #ffbd38;
+    }
 
 .attend-true {
     color: rgb(128, 219, 109);

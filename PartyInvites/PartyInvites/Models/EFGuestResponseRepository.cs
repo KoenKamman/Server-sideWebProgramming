@@ -12,7 +12,7 @@ namespace PartyInvites.Models
 		{
 			_context = context;
 		}
-
+		
 		public IEnumerable<GuestResponse> GetAllResponses()
 		{
 			return _context.Responses;
