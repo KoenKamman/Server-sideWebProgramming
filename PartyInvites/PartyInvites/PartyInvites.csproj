@@ -25,4 +25,8 @@
     <Folder Include="wwwroot\js\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="Components\CounterViewComponent.cs" />
+  </ItemGroup>
+
 </Project>

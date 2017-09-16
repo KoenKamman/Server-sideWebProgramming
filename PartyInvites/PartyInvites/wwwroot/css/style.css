@@ -270,3 +270,9 @@ input, select {
 .filters {
     float: left;
 }
+
+/* counter component*/
+
+#navbar .counter {
+    float: right;
+}
