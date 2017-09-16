@@ -264,3 +264,9 @@ input, select {
     .glyphicon-home:hover {
         background-color: #f58181;
     }
+
+/* filters */
+
+.filters {
+    float: left;
+}
