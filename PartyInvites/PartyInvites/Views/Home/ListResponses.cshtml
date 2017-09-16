@@ -1,4 +1,4 @@
-﻿@model IEnumerable<PartyInvites.Models.GuestResponse>
+﻿@model PartyInvites.Models.ViewModels.ListViewModel
 @inject PartyInvites.Abstract.IRepository Repo
 
 <div>
@@ -6,6 +6,29 @@
 		<h2>Attendance</h2>
 	</div>
 	<h4>Here is a list of people that responded and whether they're attending the party or not.</h4>
+	<p>Filter by attendance:</p>
+	<form asp-action="ListResponses" method="get">
+			<select asp-for="FilterIsAttending" onchange="this.form.submit()">
+					@if (Model.FilterIsAttending == null)
+					{
+						<option selected value="">All Responses</option>
+						<option value="true">Attending</option>
+						<option value="false">Not Attending</option>
+					}
+					else if (Model.FilterIsAttending == true)
+					{
+						<option value="">All Responses</option>
+						<option selected value="true">Attending</option>
+						<option value="false">Not Attending</option>
+					}
+					else
+					{
+						<option value="">All Responses</option>
+						<option value="true">Attending</option>
+						<option selected value="false">Not Attending</option>
+					}
+				</select>
+	</form>
 	<table>
 		<thead>
 		<tr>
@@ -17,7 +40,7 @@
 		</tr>
 		</thead>
 		<tbody>
-		@foreach (var r in Model)
+		@foreach (var r in Model.GuestResponses)
 		{
 			<tr>
 				<td>@r.Name</td>

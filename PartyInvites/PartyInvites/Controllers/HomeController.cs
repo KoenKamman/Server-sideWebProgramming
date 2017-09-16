@@ -2,6 +2,7 @@
 using PartyInvites.Models;
 using System.Linq;
 using PartyInvites.Abstract;
+using PartyInvites.Models.ViewModels;
 
 namespace PartyInvites.Controllers
 {
@@ -59,9 +60,15 @@ namespace PartyInvites.Controllers
 			return View("Thanks", guestResponse);
 		}
 
-		public ViewResult ListResponses()
+		public ViewResult ListResponses(bool? filterIsAttending)
 		{
-			return _repository.GetAllResponses().Any() ? View(_repository.GetAllResponses()) : View("NoResponses");
+			var viewmodel = new ListViewModel
+			{
+				GuestResponses = _repository.GetAllResponses().Where(r => filterIsAttending == null || r.WillAttend == filterIsAttending),
+				FilterIsAttending = filterIsAttending
+			};
+
+			return viewmodel.GuestResponses.Any() ? View(viewmodel) : View("NoResponses");
 		}
 	}
 }
