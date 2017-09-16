@@ -20,9 +20,9 @@ namespace PartyInvites.Components
 	    public IViewComponentResult Invoke()
 	    {
 		    var responses = _repository.GetAllResponses().ToList();
-		    return View(new CounterViewModel()
+		    return View(new CounterViewModel
 		    {
-			    ResponseAmount = responses.Count(),
+			    ResponseAmount = responses.Count,
 				AttendingAmount = responses.Count(r => r.WillAttend == true)
 		    });
 	    }
