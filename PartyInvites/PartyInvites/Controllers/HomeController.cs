@@ -22,13 +22,13 @@ namespace PartyInvites.Controllers
 		}
 
 		[HttpGet]
-		public ViewResult Login()
+		public ViewResult EmailForm()
 		{
 			return View();
 		}
 
 		[HttpPost]
-		public ViewResult Login(Credential credentials)
+		public ViewResult EmailForm(Credential credentials)
 		{
 			//Validation Error
 			if (!ModelState.IsValid) return View(credentials);
