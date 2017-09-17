@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PartyInvites.Models;
 using System.Linq;
+using Microsoft.AspNetCore.Authorization;
 using PartyInvites.Abstract;
+using PartyInvites.Models.ViewModels;
 
 namespace PartyInvites.Controllers
 {
@@ -20,13 +22,13 @@ namespace PartyInvites.Controllers
 		}
 
 		[HttpGet]
-		public ViewResult Login()
+		public ViewResult EmailForm()
 		{
 			return View();
 		}
 
 		[HttpPost]
-		public ViewResult Login(Credential credentials)
+		public ViewResult EmailForm(Credential credentials)
 		{
 			//Validation Error
 			if (!ModelState.IsValid) return View(credentials);
@@ -59,9 +61,16 @@ namespace PartyInvites.Controllers
 			return View("Thanks", guestResponse);
 		}
 
-		public ViewResult ListResponses()
+		[Authorize]
+		public ViewResult ListResponses(bool? filterIsAttending)
 		{
-			return _repository.GetAllResponses().Any() ? View(_repository.GetAllResponses()) : View("NoResponses");
+			var viewmodel = new ListViewModel
+			{
+				GuestResponses = _repository.GetAllResponses().Where(r => filterIsAttending == null || r.WillAttend == filterIsAttending),
+				FilterIsAttending = filterIsAttending
+			};
+
+			return viewmodel.GuestResponses.Any() ? View(viewmodel) : View("NoResponses");
 		}
 	}
 }

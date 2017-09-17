@@ -4,7 +4,7 @@ namespace PartyInvites.Models
 {
     public class DatabaseContext : DbContext
     {
-	    public DatabaseContext(DbContextOptions options)
+	    public DatabaseContext(DbContextOptions<DatabaseContext> options)
 			: base (options) {}
 
 	    public DbSet<GuestResponse> Responses { get; set; }

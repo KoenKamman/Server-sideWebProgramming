@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -28,8 +29,17 @@ namespace PartyInvites
         {
 	        //services.AddSingleton<IRepository, GuestResponseRepository>();
 			services.AddTransient<IRepository, EfGuestResponseRepository>();
+
 			services.AddDbContext<DatabaseContext>(options =>
 		        options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+	        services.AddDbContext<AppIdentityDbContext>(options =>
+		        options.UseSqlServer(Configuration.GetConnectionString("IdentityConnection")));
+
+	        services.AddIdentity<IdentityUser, IdentityRole>(r =>
+		        {
+			        r.Password.RequireNonAlphanumeric = false;
+		        })
+		        .AddEntityFrameworkStores<AppIdentityDbContext>();
 
 			// Add framework services.
             services.AddMvc();
@@ -52,6 +62,7 @@ namespace PartyInvites
             }
 
             app.UseStaticFiles();
+	        app.UseIdentity();
 
             app.UseMvc(routes =>
             {
@@ -59,6 +70,8 @@ namespace PartyInvites
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+	        IdentitySeedData.EnsurePopulated(app);
         }
     }
 }

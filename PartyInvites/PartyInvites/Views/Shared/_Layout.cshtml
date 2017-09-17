@@ -11,20 +11,25 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
 </head>
 <body>
-<div class="content-wrapper">
-	<div id="navbar">
-		<a asp-controller="Home" asp-action="Index"><i class="material-icons glyphicon-home">home</i></a>
-		<ul>
-			<li><a asp-controller="Home" asp-action="Index">Home</a></li>
-			<li><a asp-controller="Home" asp-action="ListResponses">Attendance</a></li>
-		</ul>
+	<div class="content-wrapper">
+		<div id="navbar">
+			<a asp-controller="Home" asp-action="Index"><i class="material-icons glyphicon-home">home</i></a>
+			<ul>
+				<li><a asp-controller="Home" asp-action="Index">Home</a></li>
+				<li><a asp-controller="Home" asp-action="ListResponses">Attendance</a></li>
+				@if (User.Identity.IsAuthenticated)
+				{
+					<li class="logout"><a asp-action="Logout" asp-controller="Account">Log Out</a></li>
+				}
+				<li class="counter"><a asp-controller="Home" asp-action="ListResponses">@await Component.InvokeAsync("Counter")</a></li>
+			</ul>
+		</div>
+
+		@RenderBody()
+
 	</div>
 
-	@RenderBody()
-
-</div>
-
-<script> $.backstretch("@Url.Content("~/images/_DSC0212.jpg")"); </script>
+	<script> $.backstretch("@Url.Content("~/images/_DSC0212.jpg")"); </script>
 
 </body>
 </html>

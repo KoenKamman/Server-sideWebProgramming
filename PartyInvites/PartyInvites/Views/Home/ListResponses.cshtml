@@ -1,4 +1,4 @@
-﻿@model IEnumerable<PartyInvites.Models.GuestResponse>
+﻿@model PartyInvites.Models.ViewModels.ListViewModel
 @inject PartyInvites.Abstract.IRepository Repo
 
 <div>
@@ -6,38 +6,63 @@
 		<h2>Attendance</h2>
 	</div>
 	<h4>Here is a list of people that responded and whether they're attending the party or not.</h4>
-	<table>
-		<thead>
-		<tr>
-			<th>Name</th>
-			<th>Email</th>
-			<th>Phone</th>
-			<th>Address</th>
-			<th>Attending</th>
-		</tr>
-		</thead>
-		<tbody>
-		@foreach (var r in Model)
-		{
-			<tr>
-				<td>@r.Name</td>
-				<td>@Repo.GetEmail(r)</td>
-				<td>@r.Phone</td>
-				<td>@r.Address</td>
-				@if (r.WillAttend == null)
+	<div class="filters">
+		<p>Filter by attendance:</p>
+		<form asp-action="ListResponses" method="get">
+			<select asp-for="FilterIsAttending" onchange="this.form.submit()">
+				@if (Model.FilterIsAttending == null)
 				{
-					<td class="attend-column">?</td>
+					<option selected value="">All Responses</option>
+					<option value="true">Attending</option>
+					<option value="false">Not Attending</option>
 				}
-				else if (r.WillAttend == true)
+				else if (Model.FilterIsAttending == true)
 				{
-					<td class="attend-column"><i class="material-icons attend-true">done</i></td>
+					<option value="">All Responses</option>
+					<option selected value="true">Attending</option>
+					<option value="false">Not Attending</option>
 				}
 				else
 				{
-					<td class="attend-column"><i class="material-icons attend-false">clear</i></td>
+					<option value="">All Responses</option>
+					<option value="true">Attending</option>
+					<option selected value="false">Not Attending</option>
 				}
+			</select>
+		</form>
+	</div>
+	<table>
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Email</th>
+				<th>Phone</th>
+				<th>Address</th>
+				<th>Attending</th>
 			</tr>
-		}
+		</thead>
+		<tbody>
+			@foreach (var r in Model.GuestResponses)
+			{
+				<tr>
+					<td>@r.Name</td>
+					<td>@Repo.GetEmail(r)</td>
+					<td>@r.Phone</td>
+					<td>@r.Address</td>
+					@if (r.WillAttend == null)
+					{
+						<td class="attend-column">?</td>
+					}
+					else if (r.WillAttend == true)
+					{
+						<td class="attend-column"><i class="material-icons attend-true">done</i></td>
+					}
+					else
+					{
+						<td class="attend-column"><i class="material-icons attend-false">clear</i></td>
+					}
+				</tr>
+			}
 		</tbody>
 	</table>
 </div>

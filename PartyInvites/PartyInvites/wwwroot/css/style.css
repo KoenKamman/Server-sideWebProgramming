@@ -264,3 +264,22 @@ input, select {
     .glyphicon-home:hover {
         background-color: #f58181;
     }
+
+/* filters */
+
+.filters {
+    float: left;
+}
+
+/* counter component*/
+
+#navbar .counter {
+    float: right;
+}
+
+/* Logout */
+
+#navbar .logout {
+    float: right;
+    background-color: #f17d51;
+}
