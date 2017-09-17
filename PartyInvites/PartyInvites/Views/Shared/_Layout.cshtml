@@ -17,6 +17,10 @@
 			<ul>
 				<li><a asp-controller="Home" asp-action="Index">Home</a></li>
 				<li><a asp-controller="Home" asp-action="ListResponses">Attendance</a></li>
+				@if (User.Identity.IsAuthenticated)
+				{
+					<li class="logout"><a asp-action="Logout" asp-controller="Account">Log Out</a></li>
+				}
 				<li class="counter"><a asp-controller="Home" asp-action="ListResponses">@await Component.InvokeAsync("Counter")</a></li>
 			</ul>
 		</div>

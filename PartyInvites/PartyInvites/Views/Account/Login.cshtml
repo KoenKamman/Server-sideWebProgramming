@@ -1,0 +1,19 @@
+﻿@model PartyInvites.Models.ViewModels.LoginModel
+
+<div class="form-wrapper">
+	<div asp-validation-summary="All"></div>
+	<form asp-action="Login" asp-controller="Account" method="post">
+		<input type="hidden" asp-for="ReturnUrl" />
+		<div>
+			<label asp-for="Name"></label>
+			<div><span asp-validation-for="Name"></span></div>
+			<input asp-for="Name" />
+		</div>
+		<div>
+			<label asp-for="Password"></label>
+			<div><span asp-validation-for="Password"></span></div>
+			<input asp-for="Password" />
+		</div>
+		<button type="submit">Log In</button>
+	</form>
+</div>

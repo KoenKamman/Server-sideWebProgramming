@@ -276,3 +276,10 @@ input, select {
 #navbar .counter {
     float: right;
 }
+
+/* Logout */
+
+#navbar .logout {
+    float: right;
+    background-color: #f17d51;
+}

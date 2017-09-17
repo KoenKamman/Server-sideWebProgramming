@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PartyInvites.Models;
 using System.Linq;
+using Microsoft.AspNetCore.Authorization;
 using PartyInvites.Abstract;
 using PartyInvites.Models.ViewModels;
 
@@ -60,6 +61,7 @@ namespace PartyInvites.Controllers
 			return View("Thanks", guestResponse);
 		}
 
+		[Authorize]
 		public ViewResult ListResponses(bool? filterIsAttending)
 		{
 			var viewmodel = new ListViewModel
