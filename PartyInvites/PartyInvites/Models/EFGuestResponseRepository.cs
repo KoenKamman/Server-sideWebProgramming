@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using PartyInvites.Abstract;
-using Remotion.Linq.Clauses;
 
 namespace PartyInvites.Models
 {
